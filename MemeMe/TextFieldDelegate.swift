@@ -20,12 +20,12 @@ class TextFieldDelegate: UIViewController ,UITextFieldDelegate,UINavigationContr
         return true
     }
       // Clear default texts from text field
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-         if (textField.text == "TOP" || textField.text == "BOTTOM") {
-        textField.text = ""
-        textField.text?.removeAll()
-        }
-}
+//    func textFieldDidBeginEditing(_ textField: UITextField) {
+//         if (textField.text == "TOP" || textField.text == "BOTTOM") {
+//      
+//        textField.text?.removeAll()
+//        }
+//}
     
     
     

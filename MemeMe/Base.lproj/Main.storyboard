@@ -97,7 +97,7 @@
         <!--Meme Detail View Controller-->
         <scene sceneID="4pg-FC-CEh">
             <objects>
-                <viewController storyboardIdentifier="detailMemeViewController" id="QS1-FC-MNb" customClass="MemeDetailViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController restorationIdentifier="detailMemeViewController" storyboardIdentifier="detailMemeViewController" id="QS1-FC-MNb" customClass="MemeDetailViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iFA-2t-gXK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -121,7 +121,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xxJ-bZ-UtI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1355" y="-871"/>
+            <point key="canvasLocation" x="2472" y="-871"/>
         </scene>
         <!--Sent Memes-->
         <scene sceneID="Vhl-Un-uHU">
@@ -191,7 +191,11 @@
                                 <rect key="frame" x="0.0" y="692" width="414" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="ldi-R4-ZFp"/>
-                                    <barButtonItem systemItem="camera" id="FkZ-TP-2Dw"/>
+                                    <barButtonItem systemItem="camera" id="FkZ-TP-2Dw">
+                                        <connections>
+                                            <action selector="camera:" destination="BYZ-38-t0r" id="ahV-hW-utF"/>
+                                        </connections>
+                                    </barButtonItem>
                                     <barButtonItem width="52" style="plain" systemItem="fixedSpace" id="zo9-Yp-vf2"/>
                                     <barButtonItem title="Album" width="92.999999999999972" id="8QR-9N-J8B">
                                         <connections>
@@ -230,7 +234,11 @@
                                                 <action selector="Share:" destination="BYZ-38-t0r" id="XPW-pN-aE3"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="gk7-sp-vuA"/>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="cancel" id="gk7-sp-vuA">
+                                            <connections>
+                                                <action selector="cancelImage:" destination="BYZ-38-t0r" id="GD1-RI-ZGG"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -271,7 +279,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2177" y="-871"/>
+            <point key="canvasLocation" x="1500" y="-871"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="KKv-IG-SxG">
@@ -309,7 +317,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HTK-Il-1Lm" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-568" y="-395"/>
+            <point key="canvasLocation" x="-568" y="-540"/>
         </scene>
     </scenes>
     <resources>

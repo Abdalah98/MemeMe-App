@@ -54,6 +54,7 @@ class MemeCollectionViewController: UICollectionViewController {
         self.navigationController!.pushViewController(detailController, animated: true)
     }
     @IBAction func SentMemes(_ sender: Any) {
+        
         let newMemes = self.storyboard!.instantiateViewController(withIdentifier: "ViewController")
         self.navigationController!.pushViewController(newMemes, animated: true)
     }

@@ -18,7 +18,9 @@ class MemeMeViewController: UIViewController,UIImagePickerControllerDelegate,UIN
     @IBOutlet weak var bottomTextField: UITextField!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     
-    let textFieldDelegate = TextFieldDelegate()
+    var isUsingBottomDefaultText:Bool = true
+    var isUsingTopDefaultText:Bool = true
+    //let textFieldDelegate = TextFieldDelegate()
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,9 +34,9 @@ class MemeMeViewController: UIViewController,UIImagePickerControllerDelegate,UIN
     override func viewWillAppear(_ animated: Bool) {
         // when we dont have iphone and wwork in simlator to hidden botton camera
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
-        
+        self.tabBarController?.tabBar.isHidden = true
          subscribeToKeyboardNotifications()
-       
+     
     
     }
   
@@ -43,6 +45,7 @@ class MemeMeViewController: UIViewController,UIImagePickerControllerDelegate,UIN
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
          shareButton.isEnabled = false
+        self.tabBarController?.tabBar.isHidden = false
         configureBar(hidden: false)
     }
     func configureBar(hidden: Bool) {
@@ -67,6 +70,19 @@ class MemeMeViewController: UIViewController,UIImagePickerControllerDelegate,UIN
         
     }
     //textfield
+   
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == bottomTextField && isUsingBottomDefaultText {
+            textField.text = ""
+            isUsingBottomDefaultText = false
+        }
+        
+        if textField == topTextField && isUsingTopDefaultText {
+            textField.text = ""
+            isUsingTopDefaultText = false
+        }
+    }
     func edittheText()
     {
         
@@ -154,19 +170,28 @@ class MemeMeViewController: UIViewController,UIImagePickerControllerDelegate,UIN
     }
     @IBAction func pickAnImage(_ sender: Any) {
         
-        let pickerController = UIImagePickerController()
-        pickerController.delegate = self
-        pickerController.sourceType = .photoLibrary
-
-        present(pickerController,animated: true,completion: nil)
+        pickAnImage(sourceType : .photoLibrary)
     }
     
     
     @IBAction func camera(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        present(imagePicker, animated: true, completion: nil)
-        
+       
+        pickAnImage(sourceType : .camera)
+    }
+    func pickAnImage(sourceType: UIImagePickerController.SourceType) {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = sourceType
+        present(imagePickerController, animated: true, completion: nil)
+    }
+    @IBAction func cancelImage(_ sender: Any) {
+        imagePickerView.image = nil
+        topTextField.text = "TOP"
+        bottomTextField.text = "BOTTOM"
+        shareButton.isEnabled = false
+        if let _ = self.navigationController {
+            self.navigationController!.popToRootViewController(animated: true)
+        }
     }
     
     @IBAction func Share(_ sender: Any) {
@@ -180,6 +205,8 @@ class MemeMeViewController: UIViewController,UIImagePickerControllerDelegate,UIN
                 return
             }else{
                 self.save()
+                if let _ = self.navigationController {
+                    self.navigationController!.popToRootViewController(animated: true)
     
                 
                 }
@@ -189,7 +216,7 @@ class MemeMeViewController: UIViewController,UIImagePickerControllerDelegate,UIN
         }
     
     }
-    
+}
 
 
 

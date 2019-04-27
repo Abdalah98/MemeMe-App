@@ -47,6 +47,7 @@ class MemeTableViewController: UITableViewController {
     }
 
     @IBAction func newMeme(_ sender: Any) {
+        
         let newMemes = self.storyboard!.instantiateViewController(withIdentifier: "ViewController")
         self.navigationController!.pushViewController(newMemes, animated: true)
     }
